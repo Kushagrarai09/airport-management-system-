@@ -1,271 +1,373 @@
-# Airport Management System
+# ✈️ Airport Management System
 
-A comprehensive full-stack web application for managing airport operations, including flight bookings, user management, and admin controls.
+A modern full-stack web application for managing airport operations with flight bookings, user management, and powerful admin controls.
 
-## 🚀 Features
-
-### User Module
-
-- **User Registration & Login**: Secure authentication system
-- **Profile Management**: Users can view and update their profiles
-- **View Personal Bookings**: Track all flight bookings and their status
-
-### Admin Module
-
-- **Flight Management**: Add, edit, and delete flights
-- **Booking Management**: View all bookings across the system
-- **Passenger Lists**: View passenger details for specific flights
-- **User Management**: View and manage user accounts
-
-### Flight Module
-
-- **Flight Search**: Search flights by destination, date, and other criteria
-- **Flight Listings**: Browse all available flights
-- **Real-time Updates**: Flight status and availability updates
-
-### Booking Module
-
-- **Flight Booking**: Book tickets for available flights
-- **Multiple Passengers**: Support for booking multiple passengers
-- **Seat Class Selection**: Choose from Economy, Business, or First Class
-- **Booking Cancellation**: Cancel bookings with proper validation
-- **Booking History**: Complete booking history with details
-
-## 🛠️ Technology Stack
-
-### Backend
-
-- **Node.js**: Runtime environment
-- **Express.js**: Web framework
-- **MongoDB**: Database
-- **Mongoose**: ODM for MongoDB
-- **JWT**: Authentication
-- **bcryptjs**: Password hashing
-- **CORS**: Cross-origin resource sharing
-
-### Frontend
-
-- **React.js**: Frontend library
-- **React Router**: Client-side routing
-- **Axios**: HTTP client
-- **React Toastify**: Notifications
-- **CSS3**: Styling
-
-## 📋 Prerequisites
-
-Before running this application, make sure you have the following installed:
-
-- **Node.js** (v14 or higher)
-- **npm** (v6 or higher)
-- **MongoDB** (local installation or MongoDB Atlas)
-
-## 🚀 Installation & Setup
-
-### 1. Clone the Repository
-
-```bash
-git clone <repository-url>
-cd airport-management-system
-```
-
-### 2. Backend Setup
-
-```bash
-# Navigate to backend directory
-cd backend
-
-# Install dependencies
-npm install
-
-# Create environment variables
-# Copy .env.example to .env and update the values
-cp .env.example .env
-
-# Update the .env file with your configurations:
-# NODE_ENV=development
-# PORT=5000
-# MONGODB_URI=mongodb://localhost:27017/airport_management
-# JWT_SECRET=your_jwt_secret_key_here_make_it_very_long_and_secure
-# JWT_EXPIRE=30d
-# CLIENT_URL=http://localhost:3000
-
-# Start the backend server
-npm run dev
-```
-
-### 3. Frontend Setup
-
-```bash
-# Navigate to frontend directory (from root)
-cd frontend
-
-# Install dependencies
-npm install
-
-# Start the React development server
-npm start
-```
-
-### 4. Database Setup
-
-Make sure MongoDB is running on your system:
-
-```bash
-# If using local MongoDB
-mongod
-
-# Or if using MongoDB as a service
-sudo systemctl start mongodb
-```
-
-The application will automatically create the necessary collections when you start using it.
-
-## 🔧 Configuration
-
-### Environment Variables (Backend)
-
-Create a `.env` file in the backend directory with the following variables:
-
-```env
-NODE_ENV=development
-PORT=5000
-MONGODB_URI=mongodb://localhost:27017/airport_management
-JWT_SECRET=your_jwt_secret_key_here_make_it_very_long_and_secure
-JWT_EXPIRE=30d
-CLIENT_URL=http://localhost:3000
-```
-
-### MongoDB Connection
-
-- **Local MongoDB**: Use `mongodb://localhost:27017/airport_management`
-- **MongoDB Atlas**: Use your Atlas connection string
-
-## 🌐 API Endpoints
-
-### Authentication
-
-- `POST /api/users/register` - Register new user
-- `POST /api/users/login` - User login
-- `GET /api/users/profile` - Get user profile (Protected)
-- `PUT /api/users/profile` - Update user profile (Protected)
-
-### Flights
-
-- `GET /api/flights` - Get all flights
-- `GET /api/flights/search` - Search flights
-- `GET /api/flights/:id` - Get single flight
-- `POST /api/flights` - Create flight (Admin only)
-- `PUT /api/flights/:id` - Update flight (Admin only)
-- `DELETE /api/flights/:id` - Delete flight (Admin only)
-
-### Bookings
-
-- `POST /api/bookings` - Create booking (Protected)
-- `GET /api/bookings/my-bookings` - Get user bookings (Protected)
-- `GET /api/bookings` - Get all bookings (Admin only)
-- `GET /api/bookings/:id` - Get single booking (Protected)
-- `PUT /api/bookings/:id/cancel` - Cancel booking (Protected)
-- `GET /api/bookings/flight/:flightId/passengers` - Get flight passengers (Admin only)
-
-## 👤 Default Admin Account
-
-For testing purposes, you can create an admin account by registering a user and then manually updating their role in the database:
-
-```javascript
-// Connect to MongoDB and run:
-db.users.updateOne({ email: "admin@airport.com" }, { $set: { role: "admin" } });
-```
-
-## 🎯 Usage
-
-1. **Start the application**: Follow the installation steps above
-2. **Register/Login**: Create a new account or login with existing credentials
-3. **Search Flights**: Use the search functionality to find flights
-4. **Book Flights**: Select a flight and complete the booking process
-5. **Manage Bookings**: View and manage your bookings from the dashboard
-6. **Admin Features**: If you're an admin, access additional management features
-
-## 🔒 Security Features
-
-- **JWT Authentication**: Secure token-based authentication
-- **Password Hashing**: Passwords are hashed using bcryptjs
-- **Input Validation**: Comprehensive input validation on both frontend and backend
-- **CORS Protection**: Configured CORS for secure cross-origin requests
-- **Role-based Access**: Different access levels for users and admins
-
-## 📱 Responsive Design
-
-The application is fully responsive and works seamlessly on:
-
-- Desktop computers
-- Tablets
-- Mobile phones
-
-## 🚧 Development
-
-### Adding New Features
-
-1. **Backend**: Add new routes in `/routes`, controllers in `/controllers`, and models in `/models`
-2. **Frontend**: Add new components in `/src/components` and update routing in `App.js`
-
-### Running Tests
-
-```bash
-# Backend tests
-cd backend
-npm test
-
-# Frontend tests
-cd frontend
-npm test
-```
-
-## 📦 Deployment
-
-### Backend Deployment
-
-1. Set environment variables on your hosting platform
-2. Update MONGODB_URI for production database
-3. Set NODE_ENV=production
-4. Deploy to platforms like Heroku, Railway, or DigitalOcean
-
-### Frontend Deployment
-
-1. Build the production version:
-
-```bash
-npm run build
-```
-
-2. Deploy the `build` folder to platforms like Netlify, Vercel, or AWS S3
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
-
-## 🆘 Support
-
-If you encounter any issues or have questions:
-
-1. Check the [Issues](https://github.com/your-username/airport-management-system/issues) page
-2. Create a new issue if your problem isn't already listed
-3. Provide detailed information about the problem and your environment
-
-## 🙏 Acknowledgments
-
-- React team for the amazing frontend library
-- Express.js team for the robust backend framework
-- MongoDB team for the flexible database solution
-- All contributors who help improve this project
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=flat&logo=nodedotjs&logoColor=white)
+![React](https://img.shields.io/badge/React-61DAFB?style=flat&logo=react&logoColor=black)
+![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=flat&logo=express&logoColor=white)
 
 ---
 
-**Happy Coding! ✈️**
+## 📸 What You'll Get
+
+✅ **User Portal** - Book flights, manage bookings, view history  
+✅ **Admin Dashboard** - Manage flights, view passengers, track revenue  
+✅ **Modern UI** - Professional corporate airline design  
+✅ **Secure Login** - JWT authentication with role-based access  
+✅ **Real-time Updates** - Live flight status and availability  
+
+---
+
+## � Quick Start (3 Simple Steps)
+
+### Step 1️⃣: Install Requirements
+
+Make sure you have these installed:
+- [Node.js](https://nodejs.org/) (v14 or higher)
+- [MongoDB](https://www.mongodb.com/try/download/community) (or use [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) free tier)
+
+### Step 2️⃣: Clone & Install
+
+```bash
+# Clone the repository
+git clone https://github.com/YOUR_USERNAME/airport-management-system.git
+cd airport-management-system
+
+# Install backend dependencies
+cd backend
+npm install
+
+# Install frontend dependencies
+cd ../frontend
+npm install
+```
+
+### Step 3️⃣: Configure & Run
+
+**Backend Setup:**
+```bash
+# Go to backend folder
+cd backend
+
+# Create .env file with these settings:
+# Copy and paste this into backend/.env file:
+NODE_ENV=development
+PORT=5000
+MONGODB_URI=mongodb://localhost:27017/airport_management
+JWT_SECRET=your_super_secret_key_change_this_in_production
+JWT_EXPIRE=30d
+CLIENT_URL=http://localhost:3000
+
+# Start backend (runs on http://localhost:5000)
+npm run dev
+```
+
+**Frontend Setup:**
+```bash
+# Open a new terminal and go to frontend folder
+cd frontend
+
+# Start frontend (runs on http://localhost:3000)
+npm start
+```
+
+**That's it! 🎉** Your browser will automatically open to `http://localhost:3000`
+
+---
+
+## 🎯 Quick Access
+
+| **What** | **Where** |
+|----------|-----------|
+| Frontend | http://localhost:3000 |
+| Backend API | http://localhost:5000 |
+| Admin Login | Email: `admin@airport.com` Password: `password123` |
+| MongoDB | mongodb://localhost:27017/airport_management |
+
+---
+
+## 📚 What Can Users Do?
+
+### 👤 Regular Users
+- ✈️ Search and book flights
+- 📋 View booking history
+- ❌ Cancel bookings
+- 👤 Manage profile
+
+### 👨‍💼 Admin Users
+- ➕ Add/Edit/Delete flights
+- 👥 View all passengers
+- 📊 Track bookings and revenue
+- 🔧 Manage system data
+
+---
+
+## 🗄️ MongoDB Setup Options
+
+### Option 1: Local MongoDB (Recommended for Development)
+```bash
+# Make sure MongoDB is installed and running
+# Windows: MongoDB runs as a service automatically
+# Mac: brew services start mongodb-community
+# Linux: sudo systemctl start mongodb
+```
+
+### Option 2: MongoDB Atlas (Free Cloud Database)
+1. Go to [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register)
+2. Create a free account
+3. Create a cluster (free tier)
+4. Get your connection string
+5. Update `MONGODB_URI` in `backend/.env`:
+   ```
+   MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/airport_management
+   ```
+
+---
+
+## 🛠️ Built With
+
+- **Frontend:** React.js, React Router, Axios, CSS3
+- **Backend:** Node.js, Express.js, JWT Authentication
+- **Database:** MongoDB with Mongoose ODM
+- **Security:** bcryptjs password hashing, CORS protection
+
+## 🔧 Troubleshooting
+
+### Common Issues & Solutions
+
+**Problem:** `Cannot connect to MongoDB`
+```bash
+# Solution: Make sure MongoDB is running
+# Windows: Check Services app for MongoDB
+# Mac/Linux: Run 'sudo systemctl status mongodb'
+```
+
+**Problem:** `Port 3000 or 5000 already in use`
+```bash
+# Solution: Kill the process or change port
+# Windows: netstat -ano | findstr :3000
+# Then: taskkill /PID <process-id> /F
+```
+
+**Problem:** `npm install fails`
+```bash
+# Solution: Clear npm cache and try again
+npm cache clean --force
+npm install
+```
+
+**Problem:** `Admin login not working`
+```bash
+# Solution: Run the seed script to create admin user
+cd backend
+npm run seed
+# Admin credentials: admin@airport.com / password123
+```
+
+---
+
+## 📦 Easy Deployment Guide
+
+### Deploy Backend (Railway.app - Free & Easy)
+
+1. Go to [Railway.app](https://railway.app) and sign in with GitHub
+2. Click **"New Project"** → **"Deploy from GitHub repo"**
+3. Select your `airport-management-system` repository
+4. Railway will auto-detect Node.js and deploy backend
+5. Add environment variables in Railway dashboard:
+   ```
+   NODE_ENV=production
+   PORT=5000
+   MONGODB_URI=<your-mongodb-atlas-uri>
+   JWT_SECRET=<your-secret-key>
+   JWT_EXPIRE=30d
+   CLIENT_URL=<your-frontend-url>
+   ```
+6. Get your backend URL (e.g., `https://your-app.railway.app`)
+
+### Deploy Frontend (Vercel - Free & Easy)
+
+1. Go to [Vercel.com](https://vercel.com) and sign in with GitHub
+2. Click **"New Project"** → Select your repository
+3. Configure:
+   - **Root Directory:** `frontend`
+   - **Framework Preset:** Create React App
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `build`
+4. Add environment variable:
+   ```
+   REACT_APP_API_URL=<your-railway-backend-url>
+   ```
+5. Click **"Deploy"** and you're live! 🎉
+
+### Deploy Database (MongoDB Atlas - Free Tier)
+
+1. Create account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas/register)
+2. Create a **FREE M0 Cluster**
+3. Click **"Connect"** → **"Connect your application"**
+4. Copy connection string and update in Railway environment variables
+
+**Total Cost:** $0 (All free tiers) 💰
+
+---
+
+## 📖 API Documentation
+
+<details>
+<summary><b>Click to view API endpoints</b></summary>
+
+### 🔐 Authentication
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| POST | `/api/users/register` | Register new user |
+| POST | `/api/users/login` | Login user |
+| GET | `/api/users/profile` | Get user profile |
+
+### ✈️ Flights
+| Method | Endpoint | Description | Access |
+|--------|----------|-------------|--------|
+| GET | `/api/flights` | Get all flights | Public |
+| GET | `/api/flights/search` | Search flights | Public |
+| POST | `/api/flights` | Create flight | Admin |
+| PUT | `/api/flights/:id` | Update flight | Admin |
+| DELETE | `/api/flights/:id` | Delete flight | Admin |
+
+### 🎫 Bookings
+| Method | Endpoint | Description | Access |
+|--------|----------|-------------|--------|
+| POST | `/api/bookings` | Create booking | User |
+| GET | `/api/bookings/my-bookings` | Get user bookings | User |
+| GET | `/api/bookings` | Get all bookings | Admin |
+| PUT | `/api/bookings/:id/cancel` | Cancel booking | User |
+
+</details>
+
+---
+
+## 🎨 Project Structure
+
+```
+airport-management-system/
+├── backend/
+│   ├── config/          # Database configuration
+│   ├── controllers/     # Business logic
+│   ├── middleware/      # Auth & validation
+│   ├── models/          # Database models
+│   ├── routes/          # API routes
+│   └── server.js        # Entry point
+├── frontend/
+│   ├── public/          # Static files
+│   └── src/
+│       ├── components/  # React components
+│       ├── App.js       # Main app component
+│       └── index.js     # Entry point
+└── README.md
+```
+
+## 🤝 Contributing
+
+Want to improve this project? Contributions are welcome!
+
+1. **Fork** this repository
+2. **Create** a new branch (`git checkout -b feature/amazing-feature`)
+3. **Commit** your changes (`git commit -m 'Add amazing feature'`)
+4. **Push** to branch (`git push origin feature/amazing-feature`)
+5. **Open** a Pull Request
+
+---
+
+## � License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+## 💬 Support & Contact
+
+Having issues? Need help?
+
+- 🐛 **Report bugs:** [Create an issue](https://github.com/YOUR_USERNAME/airport-management-system/issues)
+- 💡 **Feature requests:** [Start a discussion](https://github.com/YOUR_USERNAME/airport-management-system/discussions)
+- 📧 **Email:** your-email@example.com
+
+---
+
+## ⭐ Show Your Support
+
+If you found this project helpful, please give it a ⭐️!
+
+---
+
+## 📸 Screenshots
+
+<details>
+<summary><b>Click to view screenshots</b></summary>
+
+### Login Page
+![Login](screenshots/login.png)
+
+### Flight Search
+![Flights](screenshots/flights.png)
+
+### Admin Dashboard
+![Admin](screenshots/admin.png)
+
+### Booking Page
+![Booking](screenshots/booking.png)
+
+</details>
+
+---
+
+## � Quick Commands Reference
+
+```bash
+# Start backend
+cd backend && npm run dev
+
+# Start frontend
+cd frontend && npm start
+
+# Seed database with sample data
+cd backend && npm run seed
+
+# Build frontend for production
+cd frontend && npm run build
+
+# Install all dependencies (run from root)
+cd backend && npm install && cd ../frontend && npm install
+```
+
+---
+
+## 🚀 Future Enhancements
+
+- [ ] Email notifications for bookings
+- [ ] Payment gateway integration
+- [ ] Real-time flight tracking
+- [ ] Seat selection interface
+- [ ] Multi-language support
+- [ ] Mobile app (React Native)
+- [ ] PDF ticket generation
+- [ ] Advanced analytics dashboard
+
+---
+
+## 👨‍💻 Author
+
+**Your Name**
+- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
+- LinkedIn: [Your Profile](https://linkedin.com/in/your-profile)
+
+---
+
+<div align="center">
+
+### ✈️ Happy Flying! ✈️
+
+Made with ❤️ by developers, for developers
+
+**[⬆ Back to Top](#-airport-management-system)**
+
+</div>
