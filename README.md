@@ -305,7 +305,7 @@ Having issues? Need help?
 
 - 🐛 **Report bugs:** [Create an issue](https://github.com/YOUR_USERNAME/airport-management-system/issues)
 - 💡 **Feature requests:** [Start a discussion](https://github.com/YOUR_USERNAME/airport-management-system/discussions)
-- 📧 **Email:** your-email@example.com
+- 📧 **Email:** kushagrarai2004@gmail.com
 
 ---
 
@@ -373,8 +373,8 @@ cd backend && npm install && cd ../frontend && npm install
 ## 👨‍💻 Author
 
 **Your Name**
-- GitHub: [@YOUR_USERNAME](https://github.com/YOUR_USERNAME)
-- LinkedIn: [Your Profile](https://linkedin.com/in/your-profile)
+- GitHub: Kushagrarai09
+- LinkedIn: https://www.linkedin.com/in/kushagra-rai-a62201255/
 
 ---
 
