@@ -136,8 +136,7 @@ npm start
 4. Get your connection string
 5. Update `MONGODB_URI` in `backend/.env`:
    ```
-   MONGODB_URI=mongodb+srv://username:password@cluster.mongodb.net/airport_management
-   ```
+
 
 ---
 
